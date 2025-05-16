@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
-import Highcharts from "highcharts";
+import Highcharts, { type Options } from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { factory } from "highcharts/modules/accessibility";
+import "highcharts/modules/accessibility";
 import {
   monthlyData,
   accessData,
@@ -17,16 +17,20 @@ import {
 
 // クライアントサイドでのみ実行する
 const HighchartsDemo = () => {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      factory(Highcharts);
-    }
-  }, []);
+  Highcharts.setOptions({
+    lang: {
+      // locale: "ja-JP",
+      locale: "ja",
+    },
+  });
 
-  const barOptions = useMemo<Highcharts.Options>(
+  const barOptions = useMemo<Options>(
     () => ({
       title: {
         text: "売上データ（棒グラフ）",
+      },
+      lang: {
+        locale: "ja",
       },
       xAxis: {
         categories: monthlyData.categories,
@@ -42,7 +46,7 @@ const HighchartsDemo = () => {
     []
   );
 
-  const lineOptions = useMemo<Highcharts.Options>(
+  const lineOptions = useMemo<Options>(
     () => ({
       title: {
         text: "月間アクセス数（折れ線グラフ）",
@@ -61,7 +65,7 @@ const HighchartsDemo = () => {
     []
   );
 
-  const pieOptions = useMemo<Highcharts.Options>(
+  const pieOptions = useMemo<Options>(
     () => ({
       chart: {
         type: "pie",
@@ -96,7 +100,7 @@ const HighchartsDemo = () => {
     []
   );
 
-  const areaOptions = useMemo<Highcharts.Options>(
+  const areaOptions = useMemo<Options>(
     () => ({
       chart: {
         type: "area",
@@ -129,7 +133,7 @@ const HighchartsDemo = () => {
   );
 
   // 横棒グラフ
-  const horizontalBarOptions = useMemo<Highcharts.Options>(
+  const horizontalBarOptions = useMemo<Options>(
     () => ({
       chart: {
         type: "bar", // 'bar'は横棒グラフを意味します
@@ -157,7 +161,7 @@ const HighchartsDemo = () => {
   );
 
   // 積み上げ棒グラフ
-  const stackedBarOptions = useMemo<Highcharts.Options>(
+  const stackedBarOptions = useMemo<Options>(
     () => ({
       chart: {
         type: "column",
@@ -188,7 +192,7 @@ const HighchartsDemo = () => {
   );
 
   // 複合グラフ（棒グラフと折れ線グラフの組み合わせ）
-  const combinedChartOptions = useMemo<Highcharts.Options>(
+  const combinedChartOptions = useMemo<Options>(
     () => ({
       title: {
         text: "売上と目標（複合グラフ）",
@@ -211,7 +215,7 @@ const HighchartsDemo = () => {
   );
 
   // レーダーチャート
-  const radarChartOptions = useMemo<Highcharts.Options>(
+  const radarChartOptions = useMemo<Options>(
     () => ({
       chart: {
         // ここがtrueであればレーダーチャートになるはずだけどならない
@@ -263,7 +267,7 @@ const HighchartsDemo = () => {
   );
 
   // 基準線付き折れ線グラフ
-  const lineWithPlotlinesOptions = useMemo<Highcharts.Options>(
+  const lineWithPlotlinesOptions = useMemo<Options>(
     () => ({
       title: {
         text: "目標ラインあり（基準線付き折れ線グラフ）",
@@ -388,9 +392,8 @@ const HighchartsDemo = () => {
           </li>
           <li>高度なカスタマイズ性</li>
           <li>インタラクティブな機能（ズーム、ホバー情報など）</li>
-          <li>レスポンシブデザイン対応</li>
-          <li>アクセシビリティ対応</li>
           <li>商用利用には有料ライセンスが必要</li>
+          <li>スクリーンリーダー用説明テキストは多言語対応なし:sob:</li>
         </ul>
       </div>
     </div>

@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 
 // クライアントサイドのみで実行されるようにdynamicインポートを使用
-const HighchartsDemo = dynamic(() => import("@/components/HighchartsDemo"), {
+const ChartTabs = dynamic(() => import("@/components/ChartTabs"), {
   ssr: false,
 });
 
@@ -18,12 +18,8 @@ export default function Home() {
       </header>
 
       <section className="mb-10">
-        <h2 className="text-2xl font-bold mb-6">Highcharts</h2>
-        <p className="mb-4">
-          Highchartsは高機能で柔軟性の高いJavaScriptグラフライブラリです。
-        </p>
         <div className="bg-gray-50 p-6 rounded-lg">
-          <HighchartsDemo />
+          <ChartTabs />
         </div>
       </section>
 

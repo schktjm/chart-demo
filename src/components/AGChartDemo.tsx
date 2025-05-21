@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import { AgChartOptions } from "ag-charts-community";
 import { AgCharts } from "ag-charts-react";
 import {

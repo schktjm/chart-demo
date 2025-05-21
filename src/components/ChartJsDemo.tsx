@@ -14,7 +14,7 @@ import {
   RadialLinearScale,
   Filler,
 } from "chart.js";
-import { Bar, Line, Pie, Radar } from "react-chartjs-2";
+import { Bar, Line, Pie, Radar, Chart } from "react-chartjs-2";
 import annotationPlugin from "chartjs-plugin-annotation";
 import chartjs2music from "chartjs-plugin-chart2music";
 import {
@@ -410,7 +410,7 @@ const lineWithPlotlineChartOptions = {
           label: {
             display: true,
             content: "目標ライン: 3000",
-            position: "start",
+            position: "start" as const,
           },
         },
       },
@@ -479,7 +479,8 @@ const ChartJsDemo = () => {
         <div>
           <h2 className="text-xl font-bold mb-4">複合グラフ</h2>
           <div className="bg-white p-4 rounded-lg shadow">
-            <Line
+            <Chart
+              type="bar"
               options={combinedChartOptions}
               data={combinedChartDataConfig}
             />

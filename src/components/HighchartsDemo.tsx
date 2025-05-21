@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import Highcharts, { type Options } from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import "highcharts/modules/accessibility";

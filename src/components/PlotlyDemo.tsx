@@ -31,7 +31,7 @@ const PlotlyDemo = () => {
   // 棒グラフの設定
   const barChartData = [
     {
-      type: "bar",
+      type: "bar" as const,
       x: monthlyData.categories,
       y: monthlyData.series[0].data,
       name: monthlyData.series[0].name,
@@ -42,13 +42,17 @@ const PlotlyDemo = () => {
   ];
 
   const barChartLayout = {
-    title: "売上データ（棒グラフ）",
+    title: {
+      text: "売上データ（棒グラフ）",
+    },
     responsive: true,
-    width: undefined,
-    height: undefined,
+    width: undefined as undefined,
+    height: undefined as undefined,
     autosize: true,
     yaxis: {
-      title: "売上高",
+      title: {
+        text: "売上高",
+      },
     },
   };
 
@@ -59,8 +63,8 @@ const PlotlyDemo = () => {
   // 折れ線グラフの設定
   const lineChartData = [
     {
-      type: "scatter",
-      mode: "lines+markers",
+      type: "scatter" as const,
+      mode: "lines+markers" as const,
       x: accessData.categories,
       y: accessData.series[0].data,
       name: accessData.series[0].name,
@@ -74,20 +78,24 @@ const PlotlyDemo = () => {
   ];
 
   const lineChartLayout = {
-    title: "月間アクセス数（折れ線グラフ）",
+    title: {
+      text: "月間アクセス数（折れ線グラフ）",
+    },
     responsive: true,
-    width: undefined,
-    height: undefined,
+    width: undefined as undefined,
+    height: undefined as undefined,
     autosize: true,
     yaxis: {
-      title: "アクセス数",
+      title: {
+        text: "アクセス数",
+      },
     },
   };
 
   // 円グラフの設定
   const pieChartData = [
     {
-      type: "pie",
+      type: "pie" as const,
       labels: productShareData.series[0].data.map((item) => item.name),
       values: productShareData.series[0].data.map((item) => item.value),
       name: productShareData.series[0].name,
@@ -104,22 +112,24 @@ const PlotlyDemo = () => {
   ];
 
   const pieChartLayout = {
-    title: "売上割合（円グラフ）",
+    title: {
+      text: "売上割合（円グラフ）",
+    },
     responsive: true,
-    width: undefined,
-    height: undefined,
+    width: undefined as undefined,
+    height: undefined as undefined,
     autosize: true,
   };
 
   // 面積グラフの設定
   const areaChartData = [
     {
-      type: "scatter",
-      mode: "lines",
+      type: "scatter" as const,
+      mode: "lines" as const,
       x: quarterlyData.categories,
       y: quarterlyData.series[0].data,
       name: quarterlyData.series[0].name,
-      fill: "tozeroy",
+      fill: "tozeroy" as const,
       line: {
         color: "rgb(53, 162, 235)",
       },
@@ -128,21 +138,25 @@ const PlotlyDemo = () => {
   ];
 
   const areaChartLayout = {
-    title: "四半期売上推移（面積グラフ）",
+    title: {
+      text: "四半期売上推移（面積グラフ）",
+    },
     responsive: true,
-    width: undefined,
-    height: undefined,
+    width: undefined as undefined,
+    height: undefined as undefined,
     autosize: true,
     yaxis: {
-      title: "売上高（百万円）",
+      title: {
+        text: "売上高（百万円）",
+      },
     },
   };
 
   // 横棒グラフの設定
   const horizontalBarChartData = [
     {
-      type: "bar",
-      orientation: "h",
+      type: "bar" as const,
+      orientation: "h" as const,
       y: horizontalBarData.categories,
       x: horizontalBarData.series[0].data,
       name: horizontalBarData.series[0].name,
@@ -153,13 +167,17 @@ const PlotlyDemo = () => {
   ];
 
   const horizontalBarChartLayout = {
-    title: "部門別売上（横棒グラフ）",
+    title: {
+      text: "部門別売上（横棒グラフ）",
+    },
     responsive: true,
-    width: undefined,
-    height: undefined,
+    width: undefined as undefined,
+    height: undefined as undefined,
     autosize: true,
     xaxis: {
-      title: "売上高（百万円）",
+      title: {
+        text: "売上高（百万円）",
+      },
     },
   };
 
@@ -171,7 +189,7 @@ const PlotlyDemo = () => {
       "rgba(255, 206, 86, 0.6)",
     ];
     return {
-      type: "bar",
+      type: "bar" as const,
       x: stackedBarData.categories,
       y: item.data,
       name: item.name,
@@ -182,21 +200,25 @@ const PlotlyDemo = () => {
   });
 
   const stackedBarChartLayout = {
-    title: "商品別売上（積み上げ棒グラフ）",
+    title: {
+      text: "商品別売上（積み上げ棒グラフ）",
+    },
     responsive: true,
-    width: undefined,
-    height: undefined,
+    width: undefined as undefined,
+    height: undefined as undefined,
     autosize: true,
-    barmode: "stack",
+    barmode: "stack" as const,
     yaxis: {
-      title: "売上高（百万円）",
+      title: {
+        text: "売上高（百万円）",
+      },
     },
   };
 
   // 複合グラフの設定
   const combinedChartData = [
     {
-      type: "bar",
+      type: "bar" as const,
       x: stackedBarData.categories,
       y: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0],
       name: "売上高",
@@ -205,8 +227,8 @@ const PlotlyDemo = () => {
       },
     },
     {
-      type: "scatter",
-      mode: "lines+markers",
+      type: "scatter" as const,
+      mode: "lines+markers" as const,
       x: stackedBarData.categories,
       y: [60, 80, 110, 130, 150, 180],
       name: "目標",
@@ -220,13 +242,17 @@ const PlotlyDemo = () => {
   ];
 
   const combinedChartLayout = {
-    title: "売上と目標（複合グラフ）",
+    title: {
+      text: "売上と目標（複合グラフ）",
+    },
     responsive: true,
-    width: undefined,
-    height: undefined,
+    width: undefined as undefined,
+    height: undefined as undefined,
     autosize: true,
     yaxis: {
-      title: "金額（百万円）",
+      title: {
+        text: "金額（百万円）",
+      },
     },
   };
 
@@ -234,10 +260,10 @@ const PlotlyDemo = () => {
   const radarChartDataPoints = radarChartData.series.map((item, index) => {
     const colors = ["rgb(255, 99, 132)", "rgb(53, 162, 235)"];
     return {
-      type: "scatterpolar",
+      type: "scatterpolar" as const,
       r: item.data,
       theta: radarChartData.categories,
-      fill: "toself",
+      fill: "toself" as const,
       name: item.name,
       line: {
         color: colors[index % colors.length],
@@ -248,10 +274,12 @@ const PlotlyDemo = () => {
   });
 
   const radarChartLayout = {
-    title: "レーダーチャート",
+    title: {
+      text: "レーダーチャート",
+    },
     responsive: true,
-    width: undefined,
-    height: undefined,
+    width: undefined as undefined,
+    height: undefined as undefined,
     autosize: true,
     polar: {
       radialaxis: {
@@ -265,8 +293,8 @@ const PlotlyDemo = () => {
   // 基準線付き折れ線グラフの設定
   const lineWithPlotlineChartData = [
     {
-      type: "scatter",
-      mode: "lines+markers",
+      type: "scatter" as const,
+      mode: "lines+markers" as const,
       x: accessData.categories,
       y: accessData.series[0].data,
       name: accessData.series[0].name,
@@ -280,18 +308,22 @@ const PlotlyDemo = () => {
   ];
 
   const lineWithPlotlineChartLayout = {
-    title: "目標ラインあり（基準線付き折れ線グラフ）",
+    title: {
+      text: "目標ラインあり（基準線付き折れ線グラフ）",
+    },
     responsive: true,
-    width: undefined,
-    height: undefined,
+    width: undefined as undefined,
+    height: undefined as undefined,
     autosize: true,
     yaxis: {
-      title: "アクセス数",
+      title: {
+        text: "アクセス数",
+      },
     },
     shapes: [
       {
-        type: "line",
-        xref: "paper",
+        type: "line" as const,
+        xref: "paper" as const,
         x0: 0,
         y0: 3000,
         x1: 1,
@@ -299,17 +331,17 @@ const PlotlyDemo = () => {
         line: {
           color: "rgb(255, 99, 132)",
           width: 2,
-          dash: "dash",
+          dash: "dash" as const,
         },
       },
     ],
     annotations: [
       {
-        xref: "paper",
+        xref: "paper" as const,
         x: 0,
         y: 3000,
-        xanchor: "left",
-        yanchor: "middle",
+        xanchor: "left" as const,
+        yanchor: "middle" as const,
         text: "目標ライン: 3000",
         showarrow: false,
         font: {
